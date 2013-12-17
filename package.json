@@ -1,0 +1,24 @@
+{
+  "name": "wuzzy",
+  "version": "0.0.0",
+  "description": "library for working with text",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/xupit3r/wuzzy"
+  },
+  "keywords": [
+    "text",
+    "fuzzy",
+    "search"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-mocha-test": "~0.7.0"
+  },
+  "author": "Joe D'Alessandro",
+  "license": "GPL"
+}
