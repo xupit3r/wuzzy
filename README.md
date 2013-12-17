@@ -1,2 +1,2 @@
 # Wuzzy Overview
-This library was created to provide a smattering of some fuzzy string comparison logic.
+This library was created to provide a smattering of some simularity identification stuff.

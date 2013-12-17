@@ -24,6 +24,11 @@ describe('jaccard tests', function () {
 				a: [1, 2, 3, 4, 5, 6],
 				b: [7, 8, 9, 10, 11, 12],
 				exp: 0
+			},
+			{
+				a: [1, 2, 3, 4, 5, 6],
+				b: [1, 2, 3, 4, 5, 6],
+				exp: 1
 			}
 		];
 		tests.forEach(function (el) {
