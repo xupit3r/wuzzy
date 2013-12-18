@@ -149,7 +149,7 @@ exports.jarowinkler = function (a, b, t) {
  * definining weights for the deletion (key: d), insertion 
  * (key: i), and substitution (key: s). default values are 
  * 1 for all operations.
- * @return {Number}   returns the jaccard index for 
+ * @return {Number}   returns the levenshtein distance for 
  * the two provided arrays.
  */
 exports.levenshtein = function (a, b, w) {
@@ -196,7 +196,104 @@ exports.levenshtein = function (a, b, w) {
 	mlen = Math.max(a.length, b.length);
 
 	return (mlen - v1[b.length]) / mlen;
-};
+}
+
+/**
+ * Computes the n-gram edit distance for any n (defaults to 2).
+ *
+ * NOTE: this implementation is based on the one found in the 
+ * Lucene Java library.
+ * 
+ * @param  {Array} a - the first array to compare
+ * @param  {Array} b - the second array to compare
+ * @param  {Number} ng - (optional) the n-gram size to work with (defaults to 2)
+ * @return {Number}   returns the ngram distance for 
+ * the two provided arrays.
+ */
+exports.ngram = function (a, b, ng) {
+	var al = a.length;
+	var bl = b.length;
+	var n = (ng ? ng : 2);
+	var cost;
+	var i, j, ni, ti, tn, ec;
+	var sa = [];
+	var p  = [];
+	var d = [];
+	var _d = [];
+	var t_j = [];
+	var pdl = al + 1;
+
+	// empty string situation
+	if ((al === 0) || (bl === 0)) {
+		if (al === bl) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	// smaller than n situation
+	cost = 0;
+	if ((al < n) || (bl < n)) {
+		for (i = 0, ni = Math.min(al, bl); i < ni; i++) {
+			if (a[i] === b[i]) {
+				cost++;
+			}
+		}
+		return cost / Math.max(al, bl);
+	}
+
+	for (i = 0; i < (al + n - 1); i++) {
+		if (i < (n - 1)) {
+			sa[i] = 0;
+		} else {
+			sa[i] = a[i - n + 1];
+		}
+	}
+
+	for (i = 0; i <= al; i++) {
+		p[i] = i;
+	}
+
+	for (j = 1; j <= bl; j++) {
+		if (j < n) {
+			for (ti = 0; ti < (n - j); ti++) {
+				t_j[ti] = 0;
+			}
+			for (ti = (n - j); ti < n; ti++) {
+				t_j[ti] = b[ti - (n - j)];
+			}
+		} else {
+			t_j = b.slice(j - n, j);
+		}
+		d[0] = j;
+		for (i = 1; i <= al; i++) {
+			cost = 0;
+			tn = n;
+			for (ni = 0; ni < n; ni++) {
+				if (sa[i - 1 + ni] !== t_j[ni]) {
+					cost++;
+				} else if (sa[i - 1 + ni] === 0) {
+					tn--;
+				}
+			}
+			ec = cost / tn;
+			d[i] = Math.min(
+				Math.min(
+					d[i - 1] + 1,
+					p[i] + 1
+				),
+				p[i - 1] + ec
+			);
+		}
+
+		_d = p;
+		p = d;
+		d = _d;
+	}
+
+	return 1.0 - (p[al] / Math.max(al, bl));
+}
 
 /**
  * Calculates the jaccard index for the two 

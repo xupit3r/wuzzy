@@ -1,4 +1,4 @@
-/* Tests for the jaro-winkler logic. */
+/* Tests for the levenshtein logic. */
 var expect = require('chai').expect;
 var wuzzy = require('../index');
 
