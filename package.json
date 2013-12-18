@@ -1,7 +1,7 @@
 {
   "name": "wuzzy",
   "version": "0.0.0",
-  "description": "library for working with text",
+  "description": "library for simularity identification",
   "main": "index.js",
   "scripts": {
     "test": "grunt test"
@@ -13,7 +13,10 @@
   "keywords": [
     "text",
     "fuzzy",
-    "search"
+    "similar",
+    "jaccard",
+    "jarowinkler",
+    "tanimoto"
   ],
   "devDependencies": {
     "grunt": "~0.4.1",
