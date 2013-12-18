@@ -139,6 +139,66 @@ exports.jarowinkler = function (a, b, t) {
 }
 
 /**
+ * Calculates the levenshtein distance for the 
+ * two provided arrays and returns the normalized 
+ * distance.
+ * 
+ * @param  {Array} a - the first array to compare
+ * @param  {Array} b - the second array to compare
+ * @param  {Object} w - (optional) a set of key/value pairs 
+ * definining weights for the deletion (key: d), insertion 
+ * (key: i), and substitution (key: s). default values are 
+ * 1 for
+ * @return {Number}   returns the jaccard index for 
+ * the two provided arrays.
+ */
+exports.levenshtein = function (a, b, w) {
+	if (a.length === 0) {
+		return b.length;
+	} 
+	if (b.length === 0) {
+		return a.length;
+	}
+
+	var weights = (w ? w : {
+		d: 1,
+		i: 1,
+		s: 1
+	});
+	var v0 = [];
+	var v1 = [];
+	var vlen = b.length + 1;
+	var i,j;
+	var cost;
+	var mlen;
+
+	for (i = 0; i < vlen; i++) {
+		v0[i] = i;
+	}
+
+	for (i = 0; i < a.length; i++) {
+		v1[0] = i + 1;
+
+		for (j = 0; j < b.length; j++) {
+			cost = (a[i] === b[j]) ? 0 : weights.s;
+			v1[j + 1] = Math.min(
+				v1[j] + weights.d,
+				v0[j + 1] + weights.i,
+				v0[j] + cost
+			);
+		}
+
+		for (j = 0; j < vlen; j++) {
+			v0[j] = v1[j];
+		}
+	}
+
+	mlen = Math.max(a.length, b.length);
+
+	return (mlen - v1[b.length]) / mlen;
+};
+
+/**
  * Calculates the jaccard index for the two 
  * provided arrays.
  * 
