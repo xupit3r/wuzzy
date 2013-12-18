@@ -148,7 +148,7 @@ exports.jarowinkler = function (a, b, t) {
  * @param  {Object} w - (optional) a set of key/value pairs 
  * definining weights for the deletion (key: d), insertion 
  * (key: i), and substitution (key: s). default values are 
- * 1 for
+ * 1 for all operations.
  * @return {Number}   returns the jaccard index for 
  * the two provided arrays.
  */
