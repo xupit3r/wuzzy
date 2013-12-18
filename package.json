@@ -16,7 +16,9 @@
     "similar",
     "jaccard",
     "jarowinkler",
-    "tanimoto"
+    "tanimoto",
+    "levenshtein",
+    "ngram"
   ],
   "devDependencies": {
     "grunt": "~0.4.1",
