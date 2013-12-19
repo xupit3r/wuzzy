@@ -51,6 +51,19 @@ function intersection(arrs) {
 }
 
 /**
+ * Sums up the values of a given array.
+ * 
+ * @param  {Array} arr - an array containing the values to 
+ * sum up.
+ * @return {Number} the sume of the values in the array; 
+ */
+function sum (arr) {
+	return arr.reduce(function (p, c, i, a) {
+		return p + c;
+	});
+}
+
+/**
  * Computes the jaro-winkler distance for two given arrays.
  *
  * NOTE: this implementation is based on the one found in the 
@@ -293,6 +306,57 @@ exports.ngram = function (a, b, ng) {
 	}
 
 	return 1.0 - (p[al] / Math.max(al, bl));
+}
+
+/**
+ * Calculates a pearson correlation score for two given
+ * objects (compares values of similar keys).
+ * 
+ * @param  {Object} a - the first array to compare
+ * @param  {Object} b - the second array to compare
+ * @return {Number}   returns the pearson correlation for 
+ * the two provided arrays.
+ */
+exports.pearson = function (a, b) {
+	var sk = [];
+	Object.keys(a).forEach(function (k) {
+		if (b[k]) {
+			sk.push(k);
+		}
+	});
+	var n = sk.length;
+
+	if (n === 0) {
+		return 0;
+	}
+
+	var sa = sum(sk.map(function (k) {
+		return a[k];
+	}));
+	var sb = sum(sk.map(function (k) {
+		return b[k];
+	}));
+	
+	var sas = sum(sk.map(function (k) {
+		return Math.pow(a[k], 2);
+	}));
+	
+	var sbs = sum(sk.map(function (k) {
+		return Math.pow(b[k], 2);
+	}));
+
+	var sp = sum(sk.map(function (k) {
+		return a[k] * b[k];
+	}));
+
+	var num = sp - (sa * sb / n);
+	var den = Math.sqrt((sas - Math.pow(sa, 2) / n) * (sbs - Math.pow(sb, 2) / n));
+
+	if (den === 0) {
+		return 0;
+	} else {
+		return num / den;
+	}
 }
 
 /**
