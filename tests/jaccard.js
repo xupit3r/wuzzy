@@ -11,13 +11,18 @@ describe('jaccard tests', function () {
 				exp: 3/6
 			},
 			{
-				a: ["a", "b", "c", "d", "e", "f"],
-				b: ["a", "e", "f"],
+				a: ['a', 'b', 'c', 'd', 'e', 'f'],
+				b: ['a', 'e', 'f'],
 				exp: 3/6
 			},
 			{
-				a: ["abe", "babe", "cabe", "dabe", "eabe", "fabe"],
-				b: ["babe"],
+				a: 'abcdef',
+				b: 'aef',
+				exp: 3/6
+			},
+			{
+				a: ['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe'],
+				b: ['babe'],
 				exp: 1/6
 			},
 			{

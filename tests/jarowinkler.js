@@ -11,8 +11,18 @@ describe('jaro-winkler tests', function () {
 				exp: 0.961
 			}, 
 			{
+				a: 'MARTHA',
+				b: 'MARHTA',
+				exp: 0.961
+			}, 
+			{
 				a: ['D', 'W', 'A', 'Y', 'N', 'E'],
 				b: ['D', 'U', 'A', 'N', 'E'],
+				exp: 0.840
+			},
+			{
+				a: 'DWAYNE',
+				b: 'DUANE',
 				exp: 0.840
 			},
 			{
@@ -21,13 +31,28 @@ describe('jaro-winkler tests', function () {
 				exp: 0.813
 			},
 			{
+				a: 'DIXON',
+				b: 'DICKSONX',
+				exp: 0.813
+			},
+			{
 				a: ['J', 'O', 'E'],
 				b: ['M', 'A', 'T', 'T'],
 				exp: 0
 			},
 			{
+				a: 'JOE',
+				b: 'MATT',
+				exp: 0
+			},
+			{
 				a: ['J', 'O', 'E'],
 				b: ['J', 'O', 'E'],
+				exp: 1
+			},
+			{
+				a: 'JOE',
+				b: 'JOE',
 				exp: 1
 			}
 		];

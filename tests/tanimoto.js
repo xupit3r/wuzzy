@@ -11,13 +11,18 @@ describe('tanimoto tests', function () {
 				exp: (3 / (3 + 8 - 3))
 			},
 			{
-				a: ["a", "b", "c", "d", "d", "e", "f", "f"],
-				b: ["a", "e", "f"],
+				a: ['a', 'b', 'c', 'd', 'd', 'e', 'f', 'f'],
+				b: ['a', 'e', 'f'],
 				exp: (3 / (3 + 8 - 3))
 			},
 			{
-				a: ["abe", "babe", "cabe", "dabe", "eabe", "fabe", "fabe"],
-				b: ["babe"],
+				a: 'abcddeff',
+				b: 'aef',
+				exp: (3 / (3 + 8 - 3))
+			},
+			{
+				a: ['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe', 'fabe'],
+				b: ['babe'],
 				exp: (1 / (1 + 7 - 1))
 			},
 			{

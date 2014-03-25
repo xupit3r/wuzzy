@@ -9,10 +9,20 @@ describe('n-gram tests', function () {
 				a: ['M', 'A', 'R', 'T', 'H', 'A'],
 				b: ['M', 'A', 'R', 'H', 'T', 'A'],
 				exp: .667
-			}, 
+			},
+			{
+				a: 'MARTHA',
+				b: 'MARHTA',
+				exp: .667
+			},  
 			{
 				a: ['D', 'W', 'A', 'Y', 'N', 'E'],
 				b: ['D', 'U', 'A', 'N', 'E'],
+				exp: .583
+			},
+			{
+				a: 'DWAYNE',
+				b: 'DUANE',
 				exp: .583
 			},
 			{
@@ -21,8 +31,18 @@ describe('n-gram tests', function () {
 				exp: .5
 			},
 			{
+				a: 'DIXON',
+				b: 'DICKSONX',
+				exp: .5
+			},
+			{
 				a: ['A', 'B', 'C', 'V', 'W', 'X', 'Y', 'Z'],
 				b: ['C', 'A', 'B', 'V', 'W', 'X', 'Y', 'Z'],
+				exp: .625
+			},
+			{
+				a: 'ABCVWXYZ',
+				b: 'CABVWXYZ',
 				exp: .625
 			},
 			{
@@ -31,8 +51,18 @@ describe('n-gram tests', function () {
 				exp: 1
 			},
 			{
+				a: 'AL',
+				b: 'AL',
+				exp: 1
+			},
+			{
 				a: ['A'],
 				b: ['A', 'A'],
+				exp: .5
+			},
+			{
+				a: 'A',
+				b: 'AA',
 				exp: .5
 			},
 			{
@@ -41,8 +71,18 @@ describe('n-gram tests', function () {
 				exp: 1
 			},
 			{
+				a: 'A',
+				b: 'A',
+				exp: 1
+			},
+			{
 				a: ['A'],
 				b: ['B'],
+				exp: 0
+			},
+			{
+				a: 'A',
+				b: 'B',
 				exp: 0
 			},
 			{
@@ -51,8 +91,18 @@ describe('n-gram tests', function () {
 				exp: 0
 			},
 			{
+				a: 'JOE',
+				b: 'MATT',
+				exp: 0
+			},
+			{
 				a: ['J', 'O', 'E'],
 				b: ['J', 'O', 'E'],
+				exp: 1
+			},
+			{
+				a: 'JOE',
+				b: 'JOE',
 				exp: 1
 			}
 		];

@@ -1,4 +1,4 @@
-
+var util = require('util');
 
 /**
  * Computes the union of two or more arrays.
@@ -64,19 +64,43 @@ function sum (arr) {
 }
 
 /**
+ * Ensures that the provided parameter is represented 
+ * as an array. If arr is a String, it will be converted 
+ * to an array. If it is an Array, it will simply be 
+ * returned. If it is neither an Array nor String, an 
+ * Error will be raised.
+ * 
+ * @param  {String | Array} arr - what we want to ensure is an Array
+ * @return {Array}    an Array represntation of the provided 
+ * parameter.
+ */
+function ensureArr (arr) {
+	if (util.isArray(arr)) {
+		return arr;
+	} else if (typeof arr === 'string') {
+		return arr.split('');
+	} else {
+		throw Error('Parameter must be a string or array.');
+	}
+}
+
+/**
  * Computes the jaro-winkler distance for two given arrays.
  *
  * NOTE: this implementation is based on the one found in the 
  * Lucene Java library.
  * 
- * @param  {Array} a - the first array to compare
- * @param  {Array} b - the second array to compare
+ * @param  {String | Array} a - the first array to compare
+ * @param  {String | Array} b - the second array to compare
  * @param  {Number} t - the threshold for adding 
  * the winkler bonus (defaults to 0.7)
  * @return {Number}   returns the jaro-winkler distance for 
  * the two provided arrays.
  */
 exports.jarowinkler = function (a, b, t) {
+	a = ensureArr(a);
+	b = ensureArr(b);
+
 	var max, min;
 	if (a.length > b.length) {
 		max = a;
@@ -156,8 +180,8 @@ exports.jarowinkler = function (a, b, t) {
  * two provided arrays and returns the normalized 
  * distance.
  * 
- * @param  {Array} a - the first array to compare
- * @param  {Array} b - the second array to compare
+ * @param  {String | Array} a - the first array to compare
+ * @param  {String | Array} b - the second array to compare
  * @param  {Object} w - (optional) a set of key/value pairs 
  * definining weights for the deletion (key: d), insertion 
  * (key: i), and substitution (key: s). default values are 
@@ -166,6 +190,9 @@ exports.jarowinkler = function (a, b, t) {
  * the two provided arrays.
  */
 exports.levenshtein = function (a, b, w) {
+	a = ensureArr(a);
+	b = ensureArr(b);
+
 	if (a.length === 0) {
 		return b.length;
 	} 
@@ -217,13 +244,16 @@ exports.levenshtein = function (a, b, w) {
  * NOTE: this implementation is based on the one found in the 
  * Lucene Java library.
  * 
- * @param  {Array} a - the first array to compare
- * @param  {Array} b - the second array to compare
+ * @param  {String | Array} a - the first array to compare
+ * @param  {String | Array} b - the second array to compare
  * @param  {Number} ng - (optional) the n-gram size to work with (defaults to 2)
  * @return {Number}   returns the ngram distance for 
  * the two provided arrays.
  */
 exports.ngram = function (a, b, ng) {
+	a = ensureArr(a);
+	b = ensureArr(b);
+
 	var al = a.length;
 	var bl = b.length;
 	var n = (ng ? ng : 2);
@@ -312,8 +342,8 @@ exports.ngram = function (a, b, ng) {
  * Calculates a pearson correlation score for two given
  * objects (compares values of similar keys).
  * 
- * @param  {Object} a - the first array to compare
- * @param  {Object} b - the second array to compare
+ * @param  {Object} a - the first object to compare
+ * @param  {Object} b - the second object to compare
  * @return {Number}   returns the pearson correlation for 
  * the two provided arrays.
  */
@@ -363,24 +393,30 @@ exports.pearson = function (a, b) {
  * Calculates the jaccard index for the two 
  * provided arrays.
  * 
- * @param  {Array} a - the first array to compare
- * @param  {Array} b - the second array to compare
+ * @param  {String | Array} a - the first array to compare
+ * @param  {String | Array} b - the second array to compare
  * @return {Number}   returns the jaccard index for 
  * the two provided arrays.
  */
 exports.jaccard = function (a, b) {
+	a = ensureArr(a);
+	b = ensureArr(b);
+
 	return (intersection([a, b]).length / union([a, b]).length);
 }
 
 /**
  * Calculates the tanimoto distance (weighted jaccard index).
  * 
- * @param  {Array} a - the first array to compare
- * @param  {Array} b - the second array to compare
+ * @param  {String | Array} a - the first array to compare
+ * @param  {String | Array} b - the second array to compare
  * @return {Number}   returns the tanimoto distance for 
  * the two provided arrays.
  */
 exports.tanimoto = function (a, b) {
+	a = ensureArr(a);
+	b = ensureArr(b);
+
 	var both = intersection([a, b]).length;
 	return  (both / (a.length + b.length - both));
 }
