@@ -1,18 +1,6 @@
-# Overview
 
-Wuzzy was created to provide a smattering of some similarity identification stuff. Several simularity identification algorithm implementations are provided, including:
 
-* Jaccard similarity coefficient
-* Tanimoto coefficient
-* Pearson correlation
-* N-gram edit distance
-* Levenshtein distance
-* Jaro-Winkler distance
-
-Fuzzy wuzzy was a bear, fuzzy wuzzy had no hair, fuzzy wuzzy wasn't very fuzzy, was he? Well, if you aren't sure maybe this library can help! :) 
-
-# Methods
-All bad jokes aside, below is a listing of the available functions. Have fun!
+<!-- Start ./index.js -->
 
 ## jarowinkler(a, b, t)
 
@@ -23,16 +11,16 @@ Lucene Java library.
 ### Examples:
 
     wuzzy.jarowinkler(
-            ['D', 'W', 'A', 'Y', 'N', 'E'],
-            ['D', 'U', 'A', 'N', 'E']
-        );
-        // -> 0.840
+    		['D', 'W', 'A', 'Y', 'N', 'E'],
+    		['D', 'U', 'A', 'N', 'E']
+    	);
+    	// -> 0.840
 
     wuzzy.jarowinkler(
-            'DWAYNE',
-            'DUANE'
-        );
-        // -> 0.840
+    		'DWAYNE',
+    		'DUANE'
+    	);
+    	// -> 0.840
 
 ### Params: 
 
@@ -52,18 +40,18 @@ distance.
 ### Examples:
 
     wuzzy.levenshtein(
-            ['D', 'W', 'A', 'Y', 'N', 'E'],
-            ['D', 'U', 'A', 'N', 'E']
-        );
-        // -> 0.66666667
+    		['D', 'W', 'A', 'Y', 'N', 'E'],
+    		['D', 'U', 'A', 'N', 'E']
+    	);
+    	// -> 0.66666667
 
-        or
+		or
 
     wuzzy.levenshtein(
-            'DWAYNE',
-            'DUANE'
-        );
-        // -> 0.66666667
+    		'DWAYNE',
+    		'DUANE'
+    	);
+    	// -> 0.66666667
 
 ### Params: 
 
@@ -84,18 +72,18 @@ Lucene Java library.
 ### Examples:
 
     wuzzy.ngram(
-            ['D', 'W', 'A', 'Y', 'N', 'E'],
-            ['D', 'U', 'A', 'N', 'E']
-        );
-        // -> 0.583
+    		['D', 'W', 'A', 'Y', 'N', 'E'],
+    		['D', 'U', 'A', 'N', 'E']
+    	);
+    	// -> 0.583
 
-        or
+		or
 
     wuzzy.ngram(
-            'DWAYNE',
-            'DUANE'
-        );
-        // -> 0.583
+    		'DWAYNE',
+    		'DUANE'
+    	);
+    	// -> 0.583
 
 ### Params: 
 
@@ -114,18 +102,18 @@ objects (compares values of similar keys).
 ### Examples:
 
     wuzzy.pearson(
-            {a: 2.5, b: 3.5, c: 3.0, d: 3.5, e: 2.5, f: 3.0},
-            {a: 3.0, b: 3.5, c: 1.5, d: 5.0, e: 3.5, f: 3.0, g: 5.0}
-        );
-        // -> 0.396
+    		{a: 2.5, b: 3.5, c: 3.0, d: 3.5, e: 2.5, f: 3.0},
+    		{a: 3.0, b: 3.5, c: 1.5, d: 5.0, e: 3.5, f: 3.0, g: 5.0}
+    	);
+    	// -> 0.396
 
-        or
+		or
 
     wuzzy.pearson(
-            {a: 2.5, b: 1},
-            {o: 3.5, e: 6.0}
-        );
-        // -> 1.0
+    		{a: 2.5, b: 1},
+    		{o: 3.5, e: 6.0}
+    	);
+    	// -> 1.0
 
 ### Params: 
 
@@ -143,26 +131,26 @@ provided arrays.
 ### Examples:
 
     wuzzy.jaccard(
-            ['a', 'b', 'c', 'd', 'e', 'f'],
-            ['a', 'e', 'f']
-        );
-        // -> 0.5
+    		['a', 'b', 'c', 'd', 'e', 'f'],
+    		['a', 'e', 'f']
+    	);
+    	// -> 0.5
 
-        or
-
-    wuzzy.jaccard(
-            'abcdef',
-            'aef'
-        );
-        // -> 0.5
-
-        or 
+		or
 
     wuzzy.jaccard(
-            ['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe'],
-            ['babe']
-        );
-        // -> 0.16666667
+    		'abcdef',
+    		'aef'
+    	);
+    	// -> 0.5
+
+		or 
+
+    wuzzy.jaccard(
+    		['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe'],
+    		['babe']
+    	);
+    	// -> 0.16666667
 
 ### Params: 
 
@@ -179,26 +167,26 @@ Calculates the tanimoto distance (weighted jaccard index).
 ### Examples:
 
     wuzzy.tanimoto(
-            ['a', 'b', 'c', 'd', 'd', 'e', 'f', 'f'],
-            ['a', 'e', 'f']
-        );
-        // -> 0.375
+    		['a', 'b', 'c', 'd', 'd', 'e', 'f', 'f'],
+    		['a', 'e', 'f']
+    	);
+    	// -> 0.375
 
-        or
-
-    wuzzy.tanimoto(
-            'abcddeff',
-            'aef'
-        );
-        // -> 0.375
-
-        or 
+		or
 
     wuzzy.tanimoto(
-            ['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe', 'fabe'],
-            ['babe']
-        );
-        // -> 0.14285714
+    		'abcddeff',
+    		'aef'
+    	);
+    	// -> 0.375
+
+		or 
+
+    wuzzy.tanimoto(
+    		['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe', 'fabe'],
+    		['babe']
+    	);
+    	// -> 0.14285714
 
 ### Params: 
 
@@ -210,5 +198,4 @@ Calculates the tanimoto distance (weighted jaccard index).
 * **Number** returns the tanimoto distance for
 
 <!-- End ./index.js -->
-
 
