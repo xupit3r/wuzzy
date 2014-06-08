@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Wuzzy by xupit3r</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/xupit3r/wuzzy">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Wuzzy</h1>
+            <h2>Simularity identification in JS</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/xupit3r/wuzzy/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/xupit3r/wuzzy/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h1>
+
+<p>Wuzzy was created to provide a smattering of some similarity identification stuff. Several simularity identification algorithm implementations are provided, including:</p>
+
+<ul>
+<li>Jaccard similarity coefficient</li>
+<li>Tanimoto coefficient</li>
+<li>Pearson correlation</li>
+<li>N-gram edit distance</li>
+<li>Levenshtein distance</li>
+<li>Jaro-Winkler distance</li>
+</ul><p>Fuzzy wuzzy was a bear, fuzzy wuzzy had no hair, fuzzy wuzzy wasn't very fuzzy, was he? Well, if you aren't sure maybe this library can help! :) </p>
+
+<h1>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h1>
+
+<p>All bad jokes aside, below is a listing of the available functions. Have fun!</p>
+
+<h2>
+<a name="jarowinklera-b-t" class="anchor" href="#jarowinklera-b-t"><span class="octicon octicon-link"></span></a>jarowinkler(a, b, t)</h2>
+
+<p>Computes the jaro-winkler distance for two given arrays.</p>
+
+<p>NOTE: this implementation is based on the one found in the
+Lucene Java library.</p>
+
+<h3>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples:</h3>
+
+<pre><code>wuzzy.jarowinkler(
+        ['D', 'W', 'A', 'Y', 'N', 'E'],
+        ['D', 'U', 'A', 'N', 'E']
+    );
+    // -&gt; 0.840
+
+wuzzy.jarowinkler(
+        'DWAYNE',
+        'DUANE'
+    );
+    // -&gt; 0.840
+</code></pre>
+
+<h3>
+<a name="params" class="anchor" href="#params"><span class="octicon octicon-link"></span></a>Params:</h3>
+
+<ul>
+<li>
+<strong>String|Array</strong> <em>a</em> - the first string/array to compare</li>
+<li>
+<strong>String|Array</strong> <em>b</em> - the second string/array to compare</li>
+<li>
+<strong>Number</strong> <em>t</em> - the threshold for adding</li>
+</ul><h3>
+<a name="return" class="anchor" href="#return"><span class="octicon octicon-link"></span></a>Return:</h3>
+
+<ul>
+<li>
+<strong>Number</strong> returns the jaro-winkler distance for</li>
+</ul><h2>
+<a name="levenshteina-b-w" class="anchor" href="#levenshteina-b-w"><span class="octicon octicon-link"></span></a>levenshtein(a, b, w)</h2>
+
+<p>Calculates the levenshtein distance for the
+two provided arrays and returns the normalized
+distance.</p>
+
+<h3>
+<a name="examples-1" class="anchor" href="#examples-1"><span class="octicon octicon-link"></span></a>Examples:</h3>
+
+<pre><code>wuzzy.levenshtein(
+        ['D', 'W', 'A', 'Y', 'N', 'E'],
+        ['D', 'U', 'A', 'N', 'E']
+    );
+    // -&gt; 0.66666667
+
+    or
+
+wuzzy.levenshtein(
+        'DWAYNE',
+        'DUANE'
+    );
+    // -&gt; 0.66666667
+</code></pre>
+
+<h3>
+<a name="params-1" class="anchor" href="#params-1"><span class="octicon octicon-link"></span></a>Params:</h3>
+
+<ul>
+<li>
+<strong>String|Array</strong> <em>a</em> - the first string/array to compare</li>
+<li>
+<strong>String|Array</strong> <em>b</em> - the second string/array to compare</li>
+<li>
+<strong>Object</strong> <em>w</em> - (optional) a set of key/value pairs</li>
+</ul><h3>
+<a name="return-1" class="anchor" href="#return-1"><span class="octicon octicon-link"></span></a>Return:</h3>
+
+<ul>
+<li>
+<strong>Number</strong> returns the levenshtein distance for</li>
+</ul><h2>
+<a name="ngrama-b-ng" class="anchor" href="#ngrama-b-ng"><span class="octicon octicon-link"></span></a>ngram(a, b, ng)</h2>
+
+<p>Computes the n-gram edit distance for any n (defaults to 2).</p>
+
+<p>NOTE: this implementation is based on the one found in the
+Lucene Java library.</p>
+
+<h3>
+<a name="examples-2" class="anchor" href="#examples-2"><span class="octicon octicon-link"></span></a>Examples:</h3>
+
+<pre><code>wuzzy.ngram(
+        ['D', 'W', 'A', 'Y', 'N', 'E'],
+        ['D', 'U', 'A', 'N', 'E']
+    );
+    // -&gt; 0.583
+
+    or
+
+wuzzy.ngram(
+        'DWAYNE',
+        'DUANE'
+    );
+    // -&gt; 0.583
+</code></pre>
+
+<h3>
+<a name="params-2" class="anchor" href="#params-2"><span class="octicon octicon-link"></span></a>Params:</h3>
+
+<ul>
+<li>
+<strong>String|Array</strong> <em>a</em> - the first string/array to compare</li>
+<li>
+<strong>String|Array</strong> <em>b</em> - the second string/array to compare</li>
+<li>
+<strong>Number</strong> <em>ng</em> - (optional) the n-gram size to work with (defaults to 2)</li>
+</ul><h3>
+<a name="return-2" class="anchor" href="#return-2"><span class="octicon octicon-link"></span></a>Return:</h3>
+
+<ul>
+<li>
+<strong>Number</strong> returns the ngram distance for</li>
+</ul><h2>
+<a name="pearsona-b" class="anchor" href="#pearsona-b"><span class="octicon octicon-link"></span></a>pearson(a, b)</h2>
+
+<p>Calculates a pearson correlation score for two given
+objects (compares values of similar keys).</p>
+
+<h3>
+<a name="examples-3" class="anchor" href="#examples-3"><span class="octicon octicon-link"></span></a>Examples:</h3>
+
+<pre><code>wuzzy.pearson(
+        {a: 2.5, b: 3.5, c: 3.0, d: 3.5, e: 2.5, f: 3.0},
+        {a: 3.0, b: 3.5, c: 1.5, d: 5.0, e: 3.5, f: 3.0, g: 5.0}
+    );
+    // -&gt; 0.396
+
+    or
+
+wuzzy.pearson(
+        {a: 2.5, b: 1},
+        {o: 3.5, e: 6.0}
+    );
+    // -&gt; 1.0
+</code></pre>
+
+<h3>
+<a name="params-3" class="anchor" href="#params-3"><span class="octicon octicon-link"></span></a>Params:</h3>
+
+<ul>
+<li>
+<strong>Object</strong> <em>a</em> - the first object to compare</li>
+<li>
+<strong>Object</strong> <em>b</em> - the second object to compare</li>
+</ul><h3>
+<a name="return-3" class="anchor" href="#return-3"><span class="octicon octicon-link"></span></a>Return:</h3>
+
+<ul>
+<li>
+<strong>Number</strong> returns the pearson correlation for</li>
+</ul><h2>
+<a name="jaccarda-b" class="anchor" href="#jaccarda-b"><span class="octicon octicon-link"></span></a>jaccard(a, b)</h2>
+
+<p>Calculates the jaccard index for the two
+provided arrays.</p>
+
+<h3>
+<a name="examples-4" class="anchor" href="#examples-4"><span class="octicon octicon-link"></span></a>Examples:</h3>
+
+<pre><code>wuzzy.jaccard(
+        ['a', 'b', 'c', 'd', 'e', 'f'],
+        ['a', 'e', 'f']
+    );
+    // -&gt; 0.5
+
+    or
+
+wuzzy.jaccard(
+        'abcdef',
+        'aef'
+    );
+    // -&gt; 0.5
+
+    or 
+
+wuzzy.jaccard(
+        ['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe'],
+        ['babe']
+    );
+    // -&gt; 0.16666667
+</code></pre>
+
+<h3>
+<a name="params-4" class="anchor" href="#params-4"><span class="octicon octicon-link"></span></a>Params:</h3>
+
+<ul>
+<li>
+<strong>String|Array</strong> <em>a</em> - the first string/array to compare</li>
+<li>
+<strong>String|Array</strong> <em>b</em> - the second string/array to compare</li>
+</ul><h3>
+<a name="return-4" class="anchor" href="#return-4"><span class="octicon octicon-link"></span></a>Return:</h3>
+
+<ul>
+<li>
+<strong>Number</strong> returns the jaccard index for</li>
+</ul><h2>
+<a name="tanimotoa-b" class="anchor" href="#tanimotoa-b"><span class="octicon octicon-link"></span></a>tanimoto(a, b)</h2>
+
+<p>Calculates the tanimoto distance (weighted jaccard index).</p>
+
+<h3>
+<a name="examples-5" class="anchor" href="#examples-5"><span class="octicon octicon-link"></span></a>Examples:</h3>
+
+<pre><code>wuzzy.tanimoto(
+        ['a', 'b', 'c', 'd', 'd', 'e', 'f', 'f'],
+        ['a', 'e', 'f']
+    );
+    // -&gt; 0.375
+
+    or
+
+wuzzy.tanimoto(
+        'abcddeff',
+        'aef'
+    );
+    // -&gt; 0.375
+
+    or 
+
+wuzzy.tanimoto(
+        ['abe', 'babe', 'cabe', 'dabe', 'eabe', 'fabe', 'fabe'],
+        ['babe']
+    );
+    // -&gt; 0.14285714
+</code></pre>
+
+<h3>
+<a name="params-5" class="anchor" href="#params-5"><span class="octicon octicon-link"></span></a>Params:</h3>
+
+<ul>
+<li>
+<strong>String|Array</strong> <em>a</em> - the first string/array to compare</li>
+<li>
+<strong>String|Array</strong> <em>b</em> - the second string/array to compare</li>
+</ul><h3>
+<a name="return-5" class="anchor" href="#return-5"><span class="octicon octicon-link"></span></a>Return:</h3>
+
+<ul>
+<li>
+<strong>Number</strong> returns the tanimoto distance for</li>
+</ul>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/xupit3r">xupit3r</a> can be found on <a href="https://github.com/xupit3r/wuzzy">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
