@@ -12,10 +12,10 @@ Wuzzy was created to provide a smattering of some similarity identification stuf
 Fuzzy wuzzy was a bear, fuzzy wuzzy had no hair, fuzzy wuzzy wasn't very fuzzy, was he? Well, if you aren't sure maybe this library can help! :) 
 
 # Installing
-Wuzzy can be installed via [npm](http://npmjs.org)  (`npm install wuzzy`).
+Wuzzy can be installed via [npm](http://npmjs.org/package/wuzzy)  (`npm install wuzzy`).
 
 # Examples
-Some examples of using Wuzzy can be found in the [real-wuzzy](https://github.com/xupit3r/real-wuzzy) repository.
+Some examples of using Wuzzy can be found in the [real-wuzzy](https://www.npmjs.org/package/wuzzy) repository.
 
 # Methods
 All bad jokes aside, below is a listing of the available functions. Have fun!
