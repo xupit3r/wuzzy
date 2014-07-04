@@ -15,7 +15,7 @@ Fuzzy wuzzy was a bear, fuzzy wuzzy had no hair, fuzzy wuzzy wasn't very fuzzy, 
 Wuzzy can be installed via [npm](http://npmjs.org/package/wuzzy)  (`npm install wuzzy`).
 
 # Examples
-Some examples of using Wuzzy can be found in the [real-wuzzy](https://www.npmjs.org/package/wuzzy) repository.
+Some examples of using Wuzzy can be found in the [real-wuzzy](https://github.com/xupit3r/real-wuzzy) repository.
 
 # Methods
 All bad jokes aside, below is a listing of the available functions. Have fun!
