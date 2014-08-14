@@ -1,6 +1,6 @@
 {
   "name": "wuzzy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "library for simularity identification",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,9 @@
     "levenshtein",
     "ngram"
   ],
+  "dependencies": {
+    "lodash": "~2.4.x"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-mocha-test": "~0.7.0",

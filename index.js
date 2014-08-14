@@ -1,42 +1,5 @@
 var util = require('util');
-
-function union (arrs) {
-	var r = {};
-	[].concat.apply([], arrs).forEach(function (e) {
-		r[e] = e;
-	});
-	return Object.keys(r).map(function (e) {
-		return r[e];
-	});
-}
-
-function intersection(arrs) {
-	var p = {};
-	var r = [];
-	var ai = 0;
-
-	arrs.forEach(function (arr) {
-		arr.forEach(function (e) {
-			if (!p[e]) {
-				p[e] = {
-					v: e,
-					c: []
-				};
-			} else {
-				p[e].c[ai] = 1;
-			}
-		});
-		ai++;
-	});
-
-	Object.keys(p).forEach(function (k) {
-		if (p[k].c.length === arrs.length) {
-			r.push(p[k].v);
-		}
-	});
-
-	return r;
-}
+var _ = require('lodash');
 
 function sum (arr) {
 	return arr.reduce(function (p, c, i, a) {
@@ -457,7 +420,7 @@ exports.jaccard = function (a, b) {
 	a = ensureArr(a);
 	b = ensureArr(b);
 
-	return (intersection([a, b]).length / union([a, b]).length);
+	return (_.intersection(a, b).length / _.union(a, b).length);
 }
 
 /**
@@ -496,6 +459,6 @@ exports.tanimoto = function (a, b) {
 	a = ensureArr(a);
 	b = ensureArr(b);
 
-	var both = intersection([a, b]).length;
+	var both = _.intersection(a, b).length;
 	return  (both / (a.length + b.length - both));
 }
