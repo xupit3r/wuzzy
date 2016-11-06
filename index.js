@@ -1,4 +1,3 @@
-var util = require('util');
 var _ = require('lodash');
 
 function sum (arr) {
@@ -8,7 +7,7 @@ function sum (arr) {
 }
 
 function ensureArr (arr) {
-	if (util.isArray(arr)) {
+	if (_.isArray(arr)) {
 		return arr;
 	} else if (typeof arr === 'string') {
 		return arr.split('');
