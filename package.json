@@ -21,14 +21,14 @@
     "ngram"
   ],
   "dependencies": {
-    "lodash": "~2.4.x"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-mocha-test": "~0.7.0",
-    "mocha": "*",
     "chai": "*",
-    "markdox": "~0.1.x"
+    "grunt": "^1.0.4",
+    "grunt-mocha-test": "^0.13.3",
+    "markdox": "~0.1.x",
+    "mocha": "*"
   },
   "author": "Joe D'Alessandro",
   "license": "GPL"
