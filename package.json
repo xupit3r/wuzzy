@@ -27,7 +27,6 @@
     "chai": "*",
     "grunt": "^1.0.4",
     "grunt-mocha-test": "^0.13.3",
-    "markdox": "~0.1.x",
     "mocha": "*"
   },
   "author": "Joe D'Alessandro",
