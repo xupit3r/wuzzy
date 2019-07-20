@@ -1,6 +1,6 @@
 {
   "name": "wuzzy",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "library for simularity identification",
   "main": "index.js",
   "scripts": {
