@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "chai": "*",
-    "grunt": "^1.0.4",
+    "grunt": "^1.1.0",
     "grunt-mocha-test": "^0.13.3",
-    "mocha": "*"
+    "mocha": "^7.1.1"
   },
   "author": "Joe D'Alessandro",
   "license": "GPL"
