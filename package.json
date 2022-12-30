@@ -27,7 +27,7 @@
     "chai": "*",
     "grunt": "^1.1.0",
     "grunt-mocha-test": "^0.13.3",
-    "mocha": "^7.1.1"
+    "mocha": "^10.2.0"
   },
   "author": "Joe D'Alessandro",
   "license": "MIT"
